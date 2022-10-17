@@ -35,7 +35,7 @@ class ShoppingDaoTest {
 
     @Before
     fun setUp(){
-        //to tell not real storage and it stores in ram but not in persistance storage
+        //to tell not real storage and it stores in RAM but not in persistance storage
         database= Room.inMemoryDatabaseBuilder(
         ApplicationProvider.getApplicationContext(), //to get reference to the context inside of test case
         ShoppingItemDatabase::class.java
@@ -50,10 +50,10 @@ class ShoppingDaoTest {
     @Test
     fun insertShoppingItem()= runBlocking{
         val shoppingItem=ShoppingItem("name",1,1f,"url",1)
-        dao.insertShoppingItems(shoppingItem)
+        dao.insertShoppingItem(shoppingItem)
 
         //list of shopping items this observe function returns
-        val allShoppingItems=dao.observeAllShoppingItem().getOrAwaitValue()
+        val allShoppingItems=dao.observeAllShoppingItems().getOrAwaitValue()
         assertThat(allShoppingItems).contains(shoppingItem)
     }
 
@@ -61,9 +61,9 @@ class ShoppingDaoTest {
     fun deleteShoppingItem()= runBlocking {
         //we can create the same id as after each test everything is deleted
         val shoppingItem=ShoppingItem("name",1,1f,"url",1)
-        dao.insertShoppingItems(shoppingItem)
-        dao.deleteShoppingItems(shoppingItem)
-        val allShoppingItems=dao.observeAllShoppingItem().getOrAwaitValue()
+        dao.insertShoppingItem(shoppingItem)
+        dao.deleteShoppingItem(shoppingItem)
+        val allShoppingItems=dao.observeAllShoppingItems().getOrAwaitValue()
 
         assertThat(allShoppingItems).doesNotContain(shoppingItem)
     }
@@ -71,9 +71,15 @@ class ShoppingDaoTest {
     @Test
     fun observeTotalPrice()= runBlocking {
         val shoppingItem1=ShoppingItem("name",3,1f,"url",1)
-        val shoppingItem2=ShoppingItem("name",4,1.5f,"url",1)
-        val shoppingItem3=ShoppingItem("name",5,1f,"url",1)
+        val shoppingItem2=ShoppingItem("name",4,1.5f,"url",2)
+        val shoppingItem3=ShoppingItem("name",5,1f,"url",3)
 
+        dao.insertShoppingItem(shoppingItem1)
+        dao.insertShoppingItem(shoppingItem2)
+        dao.insertShoppingItem(shoppingItem3)
+
+        val tottalPriceSum=dao.observeTotalPrice().getOrAwaitValue()
+        assertThat(tottalPriceSum).isEqualTo(3*1f+4*1.5f+5*1f)
     }
 
     @After

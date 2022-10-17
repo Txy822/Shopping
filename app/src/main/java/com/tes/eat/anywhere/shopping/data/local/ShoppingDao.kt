@@ -10,15 +10,14 @@ import androidx.room.Query
 interface ShoppingDao {
 
     @Insert
-    suspend fun insertShoppingItems(shoppingItem: ShoppingItem)
-
+    suspend fun insertShoppingItem(shoppingItem: ShoppingItem)
 
     @Delete
-    suspend fun deleteShoppingItems(shoppingItem: ShoppingItem)
+    suspend fun deleteShoppingItem(shoppingItem: ShoppingItem)
 
     @Query("SELECT * FROM shopping_item")
-    fun observeAllShoppingItem():LiveData<List<ShoppingItem>>
+    fun observeAllShoppingItems():LiveData<List<ShoppingItem>>
 
     @Query("SELECT SUM(price*amount)FROM shopping_item")
-    fun observablePrice():LiveData<Float>
+    fun observeTotalPrice():LiveData<Float>
 }
