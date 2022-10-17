@@ -1,7 +1,5 @@
 package com.tes.eat.anywhere.shopping
 
-
-
 import com.google.common.truth.Truth.assertThat
 import org.junit.After
 import org.junit.Before
