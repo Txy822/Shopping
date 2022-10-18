@@ -5,7 +5,11 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.tes.eat.anywhere.shopping.R
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
 
+
+@AndroidEntryPoint
 class ShoppingFragment :Fragment(R.layout.fragment_shopping) {
 
     lateinit var viewModel:ShoppingViewModel

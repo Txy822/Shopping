@@ -22,32 +22,35 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class) //was ApplicationComponents
 object AppModule {
 
-    @Singleton
+
     @Provides
+    @Singleton
     fun providesShoppingItemDatabase(
         @ApplicationContext context: Context
-    )= Room.databaseBuilder(context,ShoppingItemDatabase::class.java,DATABASE_NAME).build()
+    ) = Room.databaseBuilder(context, ShoppingItemDatabase::class.java, DATABASE_NAME).build()
 
     //as we provide inteface of repository dagger doesn't know that how to create default repository
     //for such shopping repository
-    @Singleton
-    @Provides
-    fun provideDefaultShoppingRepository(
-dao:ShoppingDao,
-api:PixabayAPI
-    )=DefaultShoppingRepository(dao,api)as ShoppingRepository
 
-    @Singleton
     @Provides
+    @Singleton
+    fun provideDefaultShoppingRepository(
+        dao: ShoppingDao,
+        api: PixabayAPI
+    ) = DefaultShoppingRepository(dao, api) as ShoppingRepository
+
+
+    @Provides
+    @Singleton
     fun provideShoppingDao(
         database: ShoppingItemDatabase
-    )=database.shoppingDao()
+    ) = database.shoppingDao()
 
 
-    @Singleton
     @Provides
-    fun providesPixabayApi():PixabayAPI{
-        return  Retrofit.Builder()
+    @Singleton
+    fun providesPixabayApi(): PixabayAPI {
+        return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
             .build()

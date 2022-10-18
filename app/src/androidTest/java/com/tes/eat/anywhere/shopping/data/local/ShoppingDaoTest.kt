@@ -10,12 +10,16 @@ import com.tes.eat.anywhere.shopping.data.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
 
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import javax.inject.Inject
+import javax.inject.Named
 
 
 //why this annotation?
@@ -24,22 +28,34 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 //to tell that we are writing unit test
 @SmallTest //it would have been mediumTest if to test instrument
-
+@HiltAndroidTest
 class ShoppingDaoTest {
+
+    @get:Rule
+    var hiltRule=HiltAndroidRule(this)
 
     @get:Rule
     var instantTaskExecutorRule =InstantTaskExecutorRule()
 
-    private lateinit var database:ShoppingItemDatabase
+
+    @Inject
+    @Named("test_db")//just to tell that to use test app module database provider
+    lateinit var database:ShoppingItemDatabase
+
+//    private lateinit var database:ShoppingItemDatabase
     private lateinit var dao:ShoppingDao
 
     @Before
     fun setUp(){
+        //test database injected here
+        hiltRule.inject()
+        /*
         //to tell not real storage and it stores in RAM but not in persistance storage
         database= Room.inMemoryDatabaseBuilder(
         ApplicationProvider.getApplicationContext(), //to get reference to the context inside of test case
         ShoppingItemDatabase::class.java
         ).allowMainThreadQueries().build() //run in the main thread
+       */
         dao=database.shoppingDao()
     }
 
