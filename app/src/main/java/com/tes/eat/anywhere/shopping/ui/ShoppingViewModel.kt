@@ -87,7 +87,6 @@ class ShoppingViewModel @Inject constructor(
         if(imageQuery.isEmpty()) {
             return
         }
-
         //.value instead of post value to make sure the observer get loading value or resource
         _images.value = Event(Resource.loading(null))
         viewModelScope.launch {

@@ -2,6 +2,9 @@ package com.tes.eat.anywhere.shopping.di
 
 import android.content.Context
 import androidx.room.Room
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.tes.eat.anywhere.shopping.R
 import com.tes.eat.anywhere.shopping.data.local.ShoppingDao
 import com.tes.eat.anywhere.shopping.data.local.ShoppingItemDatabase
 import com.tes.eat.anywhere.shopping.data.remote.PixabayAPI
@@ -38,6 +41,16 @@ object AppModule {
         dao: ShoppingDao,
         api: PixabayAPI
     ) = DefaultShoppingRepository(dao, api) as ShoppingRepository
+
+    @Singleton
+    @Provides
+    fun provideGlideInstance(
+        @ApplicationContext context: Context
+    )= Glide.with(context).setDefaultRequestOptions(
+        RequestOptions()
+            .placeholder(R.drawable.ic_launcher_background)
+            .error(R.drawable.ic_launcher_background)
+    )
 
 
     @Provides

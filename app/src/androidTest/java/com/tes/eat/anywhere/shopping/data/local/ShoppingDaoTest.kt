@@ -10,6 +10,8 @@ import com.tes.eat.anywhere.shopping.data.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.tes.eat.anywhere.shopping.launchFragmentInHiltContainer
+import com.tes.eat.anywhere.shopping.ui.ShoppingFragment
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 
@@ -97,6 +99,12 @@ class ShoppingDaoTest {
         val tottalPriceSum=dao.observeTotalPrice().getOrAwaitValue()
         assertThat(tottalPriceSum).isEqualTo(3*1f+4*1.5f+5*1f)
     }
+
+    @Test
+    fun testLaunchFragmentInHiltContainer(){
+        launchFragmentInHiltContainer<ShoppingFragment> {  }
+    }
+
 
     @After
     fun tearDown(){
