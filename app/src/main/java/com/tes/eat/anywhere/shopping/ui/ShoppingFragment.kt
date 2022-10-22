@@ -1,5 +1,4 @@
 package com.tes.eat.anywhere.shopping.ui
-
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment

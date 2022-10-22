@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.tes.eat.anywhere.shopping.R
 import com.tes.eat.anywhere.shopping.adapters.ImageAdapter
 import com.tes.eat.anywhere.shopping.other.Constants.GRID_SPAN_COUNT
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_image_pick.*
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class ImagePickFragment @Inject constructor(
-    private val imageAdapter: ImageAdapter
+    val imageAdapter: ImageAdapter
 ): Fragment(R.layout.fragment_image_pick) {
     lateinit var viewModel:ShoppingViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
