@@ -6,11 +6,12 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.tes.eat.anywhere.shopping.adapters.ImageAdapter
 import com.tes.eat.anywhere.shopping.adapters.ShoppingAdapter
+import com.tes.eat.anywhere.shopping.repository.FakeShoppingRepositoryAndroidTest
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-class ShoppingFragmentFactory @Inject constructor(
+
+class TestShoppingFragmentFactory @Inject constructor(
     private val imageAdapter: ImageAdapter,
     private val glide: RequestManager,
     private val shoppingAdapter: ShoppingAdapter
@@ -21,8 +22,9 @@ class ShoppingFragmentFactory @Inject constructor(
        return when(className){
            ImagePickFragment::class.java.name ->ImagePickFragment(imageAdapter)
           AddShoppingItemFragment::class.java.name ->AddShoppingItemFragment(glide)
-           ShoppingFragment::class.java.name -> ShoppingFragment(shoppingAdapter)
-
+          ShoppingFragment::class.java.name -> ShoppingFragment(shoppingAdapter,
+              ShoppingViewModel(FakeShoppingRepositoryAndroidTest())
+          )
            else -> super.instantiate(classLoader, className)
        }
     }

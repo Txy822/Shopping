@@ -4,9 +4,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
-@Entity(tableName = "Shopping_item")
-data class ShoppingItem(
+@Entity(tableName = "Selling_item")
+data class SellingItem(
 
     @ColumnInfo(name = "name")
     var name:String,
@@ -23,6 +22,5 @@ data class ShoppingItem(
     @PrimaryKey(autoGenerate=true)
     val id:Int?=null,
 
-){
-
+    ){
 }

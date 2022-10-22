@@ -3,12 +3,15 @@ import com.tes.eat.anywhere.shopping.R
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.navigation.NavController
+import com.google.common.truth.Truth.assertThat
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.replaceText
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.filters.MediumTest
+import com.tes.eat.anywhere.shopping.data.getOrAwaitValue
+import com.tes.eat.anywhere.shopping.data.local.ShoppingItem
 import com.tes.eat.anywhere.shopping.launchFragmentInHiltContainer
 import com.tes.eat.anywhere.shopping.repository.FakeShoppingRepositoryAndroidTest
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -55,6 +58,9 @@ class AddShoppingItemFragmentTest {
         onView(withId(R.id.etShoppingItemAmount)).perform(replaceText("5"))
         onView(withId(R.id.etShoppingItemPrice)).perform(replaceText("5.4"))
         onView(withId(R.id.btnAddShoppingItem)).perform(click())
+
+        assertThat(testViewModel.shoppingItem.getOrAwaitValue())
+            .contains(ShoppingItem("Shopping Item", 5,4.5f, ""))
 
     }
 

@@ -4,7 +4,7 @@ package com.tes.eat.anywhere.shopping
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
-
+import com.tes.eat.anywhere.shopping.util.ResourceComparer
 
 
 import org.junit.After
@@ -14,12 +14,12 @@ import org.junit.Test
 
 class ResourceComparerTest {
 
-    private  lateinit var  resourceComparer :ResourceComparer
+    private  lateinit var  resourceComparer : ResourceComparer
 
 
     @Before
     fun setUp() {
-        resourceComparer=ResourceComparer()
+        resourceComparer= ResourceComparer()
 
     }
 

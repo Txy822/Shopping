@@ -1,6 +1,7 @@
 package com.tes.eat.anywhere.shopping
 
 import com.google.common.truth.Truth.assertThat
+import com.tes.eat.anywhere.shopping.util.RegistrationUtil
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -17,7 +18,7 @@ class RegistrationUtilTest {
 
     @Test
     fun `empty username returns false`(){
-        val result =RegistrationUtil.validateRegistrationInput(
+        val result = RegistrationUtil.validateRegistrationInput(
             "",
             "123",
             "123"
@@ -27,7 +28,7 @@ class RegistrationUtilTest {
 
     @Test
     fun `valid username and correctly repeated password`(){
-        val result =RegistrationUtil.validateRegistrationInput(
+        val result = RegistrationUtil.validateRegistrationInput(
             "user1",
             "123",
             "123"
@@ -36,7 +37,7 @@ class RegistrationUtilTest {
     }
     @Test
     fun `username already exists retuns false`(){
-        val result =RegistrationUtil.validateRegistrationInput(
+        val result = RegistrationUtil.validateRegistrationInput(
             "user2",
             "123",
             "123"

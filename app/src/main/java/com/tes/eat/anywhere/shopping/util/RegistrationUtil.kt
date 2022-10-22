@@ -1,4 +1,4 @@
-package com.tes.eat.anywhere.shopping
+package com.tes.eat.anywhere.shopping.util
 
 object RegistrationUtil {
     private val existingUsers =listOf("User1","user2")
