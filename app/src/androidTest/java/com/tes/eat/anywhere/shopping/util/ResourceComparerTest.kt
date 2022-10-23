@@ -1,10 +1,10 @@
-package com.tes.eat.anywhere.shopping
+package com.tes.eat.anywhere.shopping.util
 
 //import com.google.common.truth.Truth.assertThat
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
-import com.tes.eat.anywhere.shopping.util.ResourceComparer
+import com.tes.eat.anywhere.shopping.R
 
 
 import org.junit.After
@@ -34,13 +34,13 @@ class ResourceComparerTest {
     @Test
     fun stringResourceSameAsGivenString_returnsTrue(){
        val  context =ApplicationProvider.getApplicationContext<Context>()
-        val result =resourceComparer.isEqual(context,R.string.app_name,"Shopping")
+        val result =resourceComparer.isEqual(context, R.string.app_name,"Shopping")
         assertTrue(result)
     }
     @Test
     fun stringResourceDifferentAsGivenString_returnsFalse(){
         val  context =ApplicationProvider.getApplicationContext<Context>()
-        val result =resourceComparer.isEqual(context,R.string.app_name,"Shopping")
+        val result =resourceComparer.isEqual(context, R.string.app_name,"Shopping")
         assertTrue(result)
     }
 }

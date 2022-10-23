@@ -78,9 +78,10 @@ class ShoppingDaoTest {
     @Test
     fun deleteShoppingItem()= runBlocking {
         //we can create the same id as after each test everything is deleted
-        val shoppingItem=ShoppingItem("name",1,1f,"url",1)
+        val shoppingItem=ShoppingItem("name",1,1f,"url",id=1)
         dao.insertShoppingItem(shoppingItem)
         dao.deleteShoppingItem(shoppingItem)
+
         val allShoppingItems=dao.observeAllShoppingItems().getOrAwaitValue()
 
         assertThat(allShoppingItems).doesNotContain(shoppingItem)
@@ -88,9 +89,9 @@ class ShoppingDaoTest {
 
     @Test
     fun observeTotalPrice()= runBlocking {
-        val shoppingItem1=ShoppingItem("name",3,1f,"url",1)
-        val shoppingItem2=ShoppingItem("name",4,1.5f,"url",2)
-        val shoppingItem3=ShoppingItem("name",5,1f,"url",3)
+        val shoppingItem1=ShoppingItem("name",3,1f,"url",id=1)
+        val shoppingItem2=ShoppingItem("name",4,1.5f,"url",id=2)
+        val shoppingItem3=ShoppingItem("name",5,1f,"url",id=3)
 
         dao.insertShoppingItem(shoppingItem1)
         dao.insertShoppingItem(shoppingItem2)

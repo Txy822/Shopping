@@ -1,4 +1,4 @@
-package com.tes.eat.anywhere.shopping
+package com.tes.eat.anywhere.shopping.util
 
 import org.junit.Test
 

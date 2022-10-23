@@ -1,4 +1,4 @@
-package com.tes.eat.anywhere.shopping
+package com.tes.eat.anywhere.shopping.util
 
 import com.google.common.truth.Truth.assertThat
 import com.tes.eat.anywhere.shopping.util.RegistrationUtil

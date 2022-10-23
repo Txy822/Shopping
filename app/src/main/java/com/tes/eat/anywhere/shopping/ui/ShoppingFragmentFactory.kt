@@ -22,7 +22,6 @@ class ShoppingFragmentFactory @Inject constructor(
            ImagePickFragment::class.java.name ->ImagePickFragment(imageAdapter)
           AddShoppingItemFragment::class.java.name ->AddShoppingItemFragment(glide)
            ShoppingFragment::class.java.name -> ShoppingFragment(shoppingAdapter)
-
            else -> super.instantiate(classLoader, className)
        }
     }

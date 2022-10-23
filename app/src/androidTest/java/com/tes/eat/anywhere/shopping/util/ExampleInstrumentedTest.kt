@@ -1,4 +1,4 @@
-package com.tes.eat.anywhere.shopping
+package com.tes.eat.anywhere.shopping.util
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

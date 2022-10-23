@@ -40,7 +40,6 @@ class ImagePickFragmentTest {
     var hiltRule =HiltAndroidRule(this)
 
     //factory need to create correct fragment
-
     lateinit var  fragmentFactory:FragmentFactory
 
     @Before

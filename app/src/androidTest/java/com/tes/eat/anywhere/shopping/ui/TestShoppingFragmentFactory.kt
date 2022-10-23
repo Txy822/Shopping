@@ -21,9 +21,10 @@ class TestShoppingFragmentFactory @Inject constructor(
 
        return when(className){
            ImagePickFragment::class.java.name ->ImagePickFragment(imageAdapter)
-          AddShoppingItemFragment::class.java.name ->AddShoppingItemFragment(glide)
-          ShoppingFragment::class.java.name -> ShoppingFragment(shoppingAdapter,
-              ShoppingViewModel(FakeShoppingRepositoryAndroidTest())
+           AddShoppingItemFragment::class.java.name ->AddShoppingItemFragment(glide)
+           ShoppingFragment::class.java.name -> ShoppingFragment(
+               shoppingAdapter,
+               ShoppingViewModel(FakeShoppingRepositoryAndroidTest())
           )
            else -> super.instantiate(classLoader, className)
        }

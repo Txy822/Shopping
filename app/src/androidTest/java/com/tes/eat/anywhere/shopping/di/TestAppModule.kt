@@ -18,6 +18,6 @@ object TestAppModule {
     @Named("test_db")
     fun provideInMemoryDb(@ApplicationContext context: Context)=
         Room.inMemoryDatabaseBuilder(context,ShoppingItemDatabase::class.java)
-            .fallbackToDestructiveMigrationOnDowngrade()
+            .allowMainThreadQueries()
             .build()
 }
