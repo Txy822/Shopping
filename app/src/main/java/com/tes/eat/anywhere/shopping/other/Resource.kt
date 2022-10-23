@@ -1,6 +1,8 @@
 package com.tes.eat.anywhere.shopping.other
 
 
+//generic class that takes generic key wrap to any object used to
+// check observe if error occured or sucessful
 data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
     companion object {
         fun <T> success(data: T?): Resource<T> {

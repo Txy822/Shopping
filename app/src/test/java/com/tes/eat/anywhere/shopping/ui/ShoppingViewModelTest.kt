@@ -19,7 +19,6 @@ import org.junit.Test
 class ShoppingViewModelTest {
     @OptIn(ExperimentalCoroutinesApi::class)
     private val testDispatcher = StandardTestDispatcher()
-
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 

@@ -10,12 +10,15 @@ import com.bumptech.glide.RequestManager
 import com.tes.eat.anywhere.shopping.R
 import com.tes.eat.anywhere.shopping.data.local.ShoppingItem
 import kotlinx.android.synthetic.main.item_image.view.*
+import kotlinx.android.synthetic.main.item_image.view.ivShoppingImage
+import kotlinx.android.synthetic.main.item_shopping.view.*
 import javax.inject.Inject
 
 class ShoppingAdapter @Inject constructor(
     private val glide: RequestManager
-):RecyclerView.Adapter<ShoppingAdapter.ImageViewHolder>(){
-    class ImageViewHolder(itemView: View):RecyclerView.ViewHolder(itemView)
+):RecyclerView.Adapter<ShoppingAdapter.ShoppingViewHolder>(){
+
+    class ShoppingViewHolder(itemView: View):RecyclerView.ViewHolder(itemView)
 
     private val diffCallback = object:DiffUtil.ItemCallback<ShoppingItem>(){
         override fun areItemsTheSame(oldItem: ShoppingItem, newItem: ShoppingItem): Boolean {
@@ -33,10 +36,10 @@ class ShoppingAdapter @Inject constructor(
     get() =differ.currentList
     set(value)=differ.submitList(value)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-        return ImageViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoppingAdapter.ShoppingViewHolder {
+        return ShoppingViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.item_image,
+                R.layout.item_shopping,
                 parent,
                 false
             )
@@ -44,18 +47,25 @@ class ShoppingAdapter @Inject constructor(
 
     }
 
-    private var onItemClickListener:((String)->Unit)?=null
+//    private var onItemClickListener:((String)->Unit)?=null
+//
+//    fun setOnItemClickListener(listener:(String)->Unit){
+//        onItemClickListener=listener
+//    }
 
-    fun setOnItemClickListener(listener:(String)->Unit){
-        onItemClickListener=listener
-    }
-
-    override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ShoppingAdapter.ShoppingViewHolder, position: Int) {
 
         //val url=images[position]
         val shoppingItem = shoppingItems[position]
         holder.itemView.apply {
-            glide.load(shoppingItem).into(ivShoppingImage)
+            glide.load(shoppingItem.imageUrl).into(ivShoppingImage)
+
+            tvName.text=shoppingItem.name
+            val amountText = "${shoppingItem.amount}x"
+            tvShoppingItemAmount.text=amountText
+            val priceText ="${shoppingItem.price}£"
+            tvShoppingItemPrice.text =priceText
+
 
 //            setOnClickListener{
 //                onItemClickListener?.let { click ->

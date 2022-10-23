@@ -89,6 +89,7 @@ class ShoppingViewModel @Inject constructor(
         }
         //.value instead of post value to make sure the observer get loading value or resource
         _images.value = Event(Resource.loading(null))
+        //launch coroutine to make api request
         viewModelScope.launch {
             val response = repository.searchForImage(imageQuery)
             _images.value = Event(response)

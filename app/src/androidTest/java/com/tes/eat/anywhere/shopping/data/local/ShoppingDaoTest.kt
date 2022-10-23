@@ -69,7 +69,6 @@ class ShoppingDaoTest {
     fun insertShoppingItem()= runBlocking{
         val shoppingItem=ShoppingItem("name",1,1f,"url",1)
         dao.insertShoppingItem(shoppingItem)
-
         //list of shopping items this observe function returns
         val allShoppingItems=dao.observeAllShoppingItems().getOrAwaitValue()
         assertThat(allShoppingItems).contains(shoppingItem)
@@ -103,7 +102,9 @@ class ShoppingDaoTest {
 
     @Test
     fun testLaunchFragmentInHiltContainer(){
-        launchFragmentInHiltContainer<ShoppingFragment> {  }
+        launchFragmentInHiltContainer<ShoppingFragment> {
+
+        }
     }
 
 

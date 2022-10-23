@@ -64,7 +64,7 @@ var hiltRule=HiltAndroidRule(this)
         }
 
         onView(withId(R.id.rvShoppingItems)).perform(
-            RecyclerViewActions.actionOnItemAtPosition<ShoppingAdapter.ImageViewHolder>(
+            RecyclerViewActions.actionOnItemAtPosition<ShoppingAdapter.ShoppingViewHolder>(
                 0,
                 swipeLeft()
             )

@@ -65,11 +65,14 @@ class ImagePickFragment @Inject constructor(
                     Status.SUCCESS -> {
                         val urls = result.data?.imageResponse?.map { imageResult ->  imageResult.previewURL }
                         imageAdapter.images = urls ?: listOf()
+                        System.out.println("url was not empty: $urls")
                         progressBar.visibility = View.GONE
                     }
                     Status.ERROR -> {
+                        val view = requireActivity().findViewById<View>(android.R.id.content)
+
                         Snackbar.make(
-                            requireActivity().rootLayout,
+                            view,
                             result.message ?: "An unknown error occured.",
                             Snackbar.LENGTH_LONG
                         ).show()

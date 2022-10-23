@@ -1,6 +1,6 @@
 package com.tes.eat.anywhere.shopping.util
 
-object RegistrationUtil {
+class  RegistrationUtil {
     private val existingUsers =listOf("User1","user2")
 /*
 the input is not valid if pass/username is empty and

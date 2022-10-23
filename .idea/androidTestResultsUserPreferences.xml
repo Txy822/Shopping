@@ -29,6 +29,19 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
+        <entry key="-1325370625">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Emulator_one" value="120" />
+                  <entry key="Tests" value="360" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
         <entry key="-828763915">
           <value>
             <AndroidTestResultsTableState>
@@ -62,6 +75,7 @@
                 <map>
                   <entry key="Duration" value="90" />
                   <entry key="Emulator_four" value="120" />
+                  <entry key="Emulator_one" value="120" />
                   <entry key="Tests" value="360" />
                 </map>
               </option>
@@ -69,6 +83,19 @@
           </value>
         </entry>
         <entry key="-259177513">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Emulator_one" value="120" />
+                  <entry key="Tests" value="360" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
+        <entry key="28274291">
           <value>
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
@@ -155,6 +182,19 @@
                 <map>
                   <entry key="Duration" value="90" />
                   <entry key="Emulator_four" value="120" />
+                  <entry key="Tests" value="360" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
+        <entry key="2035440227">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Emulator_one" value="120" />
                   <entry key="Tests" value="360" />
                 </map>
               </option>

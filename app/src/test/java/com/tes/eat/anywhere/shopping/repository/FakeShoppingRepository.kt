@@ -10,10 +10,8 @@ import com.tes.eat.anywhere.shopping.other.Resource
 class FakeShoppingRepository:ShoppingRepository {
 
     private val shoppingItems = mutableListOf<ShoppingItem>()
-
     private val observableShoppingItems = MutableLiveData<List<ShoppingItem>>(shoppingItems)
     private val observableTotalPrice = MutableLiveData<Float>()
-
     private var shouldReturnNetworkError = false
 
     fun setShouldReturnNetworkError(value: Boolean) {

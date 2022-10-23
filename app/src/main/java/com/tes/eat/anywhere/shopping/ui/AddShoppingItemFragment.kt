@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.google.android.material.snackbar.Snackbar
 import com.tes.eat.anywhere.shopping.R
@@ -15,9 +14,7 @@ import com.tes.eat.anywhere.shopping.other.Status
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_add_shopping_item.*
 import kotlinx.android.synthetic.main.fragment_shopping.*
-import kotlinx.android.synthetic.main.item_image.*
 import kotlinx.android.synthetic.main.item_image.ivShoppingImage
-import kotlinx.coroutines.flow.callbackFlow
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -25,6 +22,7 @@ class AddShoppingItemFragment @Inject constructor(
     val glide: RequestManager
 ): Fragment(R.layout.fragment_add_shopping_item) {
     lateinit var viewModel:ShoppingViewModel
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view,savedInstanceState)
         viewModel= ViewModelProvider(requireActivity()).get(ShoppingViewModel::class.java)
@@ -42,6 +40,7 @@ class AddShoppingItemFragment @Inject constructor(
         }
         val callback=object :OnBackPressedCallback(true){
             override fun handleOnBackPressed() {
+                viewModel.setCurImageUrl("")
                 findNavController().popBackStack()
             }
         }
@@ -56,11 +55,13 @@ class AddShoppingItemFragment @Inject constructor(
             it.getContentIfNotHandled()?.let{result ->
                 when(result.status){
                     Status.SUCCESS -> {
-                        Snackbar.make(requireActivity().rootLayout,"Added shoping Item ", Snackbar.LENGTH_LONG).show()
+                        val view = requireActivity().findViewById<View>(android.R.id.content)
+                        Snackbar.make(view,"Added shoping Item ", Snackbar.LENGTH_LONG).show()
                         findNavController().popBackStack()
                     }
                     Status.ERROR ->{
-                        Snackbar.make(requireActivity().rootLayout,result.message?:"An unknown error occured", Snackbar.LENGTH_LONG).show()
+                        val view = requireActivity().findViewById<View>(android.R.id.content)
+                        Snackbar.make(view,result.message?:"An unknown error occured", Snackbar.LENGTH_LONG).show()
                         findNavController().popBackStack()
 
                     }
@@ -74,5 +75,4 @@ class AddShoppingItemFragment @Inject constructor(
             }
         })
     }
-
 }

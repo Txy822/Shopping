@@ -7,28 +7,26 @@ import org.junit.Before
 import org.junit.Test
 
 class RegistrationUtilTest {
+   private  var registrationUtil: RegistrationUtil? = null
 
     @Before
     fun setUp() {
-    }
-
-    @After
-    fun tearDown() {
+         registrationUtil= RegistrationUtil()
     }
 
     @Test
     fun `empty username returns false`(){
-        val result = RegistrationUtil.validateRegistrationInput(
+
+        val result = registrationUtil?.validateRegistrationInput(
             "",
             "123",
             "123"
         )
-        assertThat(result).isFalse()
     }
 
     @Test
     fun `valid username and correctly repeated password`(){
-        val result = RegistrationUtil.validateRegistrationInput(
+        val result = registrationUtil?.validateRegistrationInput(
             "user1",
             "123",
             "123"
@@ -37,18 +35,19 @@ class RegistrationUtilTest {
     }
     @Test
     fun `username already exists retuns false`(){
-        val result = RegistrationUtil.validateRegistrationInput(
+        val result = registrationUtil?.validateRegistrationInput(
             "user2",
             "123",
             "123"
         )
         assertThat(result).isFalse()
     }
-
-    //empty password
-    //password was repeated incorrectly
-    //password contains less than 2 digits
     @Test
     fun validateRegistrationInput() {
     }
+
+    @After
+    fun tearDown() {
+    }
+
 }
