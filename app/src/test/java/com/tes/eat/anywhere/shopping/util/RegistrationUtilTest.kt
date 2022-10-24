@@ -22,6 +22,7 @@ class RegistrationUtilTest {
             "123",
             "123"
         )
+        assertThat(result).isFalse()
     }
 
     @Test
